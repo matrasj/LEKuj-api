@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.List;
+
 @Entity
 @Table(name = "category")
 @Builder
@@ -22,4 +24,8 @@ public class CategoryEntity {
 
     @Column(name = "parent_category_id")
     Long parentCategoryId;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_category_id")
+    List<CategoryEntity> subCategories;
 }
