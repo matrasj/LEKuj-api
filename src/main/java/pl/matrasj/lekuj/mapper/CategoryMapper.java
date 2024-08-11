@@ -1,5 +1,6 @@
 package pl.matrasj.lekuj.mapper;
 
+import org.springframework.stereotype.Component;
 import pl.matrasj.lekuj.payload.category.CategoryCommand;
 import pl.matrasj.lekuj.entity.CategoryEntity;
 import pl.matrasj.lekuj.payload.category.CategoryQuery;
@@ -7,8 +8,9 @@ import pl.matrasj.lekuj.payload.category.CategoryQuery;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class CategoryMapper {
-    public static CategoryCommand toCommand(CategoryEntity category) {
+    public CategoryCommand toCommand(CategoryEntity category) {
         return CategoryCommand.builder()
                 .id(category.getId())
                 .name(category.getName())
@@ -16,11 +18,11 @@ public class CategoryMapper {
                 .build();
     }
 
-    public static List<CategoryCommand> toCommand(List<CategoryEntity> categories) {
-        return categories.stream().map(CategoryMapper::toCommand).collect(Collectors.toList());
+    public List<CategoryCommand> toCommand(List<CategoryEntity> categories) {
+        return categories.stream().map(this::toCommand).collect(Collectors.toList());
     }
 
-    public static CategoryQuery toQuery(CategoryEntity category) {
+    public CategoryQuery toQuery(CategoryEntity category) {
         return CategoryQuery.builder()
                 .id(category.getId())
                 .name(category.getName())
@@ -29,11 +31,11 @@ public class CategoryMapper {
                 .build();
     }
 
-    public static List<CategoryQuery> toQuery(List<CategoryEntity> categories) {
-        return categories.stream().map(CategoryMapper::toQuery).collect(Collectors.toList());
+    public List<CategoryQuery> toQuery(List<CategoryEntity> categories) {
+        return categories.stream().map(this::toQuery).collect(Collectors.toList());
     }
 
-    public static CategoryEntity toEntity(CategoryCommand category) {
+    public CategoryEntity toEntity(CategoryCommand category) {
         return CategoryEntity.builder()
                 .id(category.getId())
                 .name(category.getName())
@@ -41,7 +43,7 @@ public class CategoryMapper {
                 .build();
     }
 
-    public static List<CategoryEntity> toEntity(List<CategoryCommand> categories) {
-        return categories.stream().map(CategoryMapper::toEntity).collect(Collectors.toList());
+    public List<CategoryEntity> toEntity(List<CategoryCommand> categories) {
+        return categories.stream().map(this::toEntity).collect(Collectors.toList());
     }
 }

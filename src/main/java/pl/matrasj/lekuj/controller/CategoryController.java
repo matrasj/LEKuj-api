@@ -19,10 +19,11 @@ import java.util.List;
 public class CategoryController {
     CategoryService categoryService;
     CategoryRepository categoryRepository;
+    CategoryMapper categoryMapper;
 
     @GetMapping
     public List<CategoryQuery> getCategories() {
-        return CategoryMapper.toQuery(categoryRepository.findAll());
+        return categoryMapper.toQuery(categoryRepository.findAll());
     }
 
     @PostMapping("create-many")

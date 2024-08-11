@@ -15,8 +15,8 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class CategoryService {
     CategoryRepository categoryRepository;
-
+    CategoryMapper categoryMapper;
     public List<CategoryCommand> createCategories(List<CategoryCommand> categories) {
-        return CategoryMapper.toCommand(categoryRepository.saveAll(CategoryMapper.toEntity(categories)));
+        return categoryMapper.toCommand(categoryRepository.saveAll(categoryMapper.toEntity(categories)));
     }
 }
