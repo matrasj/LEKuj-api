@@ -1,4 +1,4 @@
-package pl.matrasj.lekuj.payload.category;
+package pl.matrasj.lekuj.payload.question;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -8,8 +8,6 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class CategoryCommand {
-    Long id;
-    String name;
-    Long parentCategoryId;
+public class QuestionQuery {
+    String content;
 }

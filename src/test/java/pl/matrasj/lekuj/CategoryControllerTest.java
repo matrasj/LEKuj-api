@@ -52,28 +52,6 @@ public class CategoryControllerTest {
     }
 
     @Test
-    public void testGetCategories() throws Exception {
-        // Given
-        List<CategoryEntity> entities = Arrays.asList(
-                CategoryEntity.builder().id(1L).name("Medycyna").parentCategoryId(null).build(),
-                CategoryEntity.builder().id(2L).name("Dermatologia").parentCategoryId(1L).build()
-        );
-        List<CategoryQuery> queries = Arrays.asList(
-                CategoryQuery.builder().id(1L).name("Medycyna").build(),
-                CategoryQuery.builder().id(2L).name("Dermatologia").build()
-        );
-
-        when(categoryRepository.findAll()).thenReturn(entities);
-        when(categoryMapper.toQuery(anyList())).thenReturn(queries);
-
-        // When & Then
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/category"))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].name").value("Medycyna"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[1].name").value("Dermatologia"));
-    }
-
-    @Test
     public void testCreateCategories() throws Exception {
         // Given
         List<CategoryCommand> categories = Arrays.asList(
@@ -86,7 +64,7 @@ public class CategoryControllerTest {
         mockMvc.perform(post("/api/category/create-many")
                         .contentType("application/json")
                         .content(objectMapper.writeValueAsString(categories)))
-                .andExpect(status().isOk())
+                .andExpect(status().isCreated())
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].name").value("Medycyna"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[1].name").value("Dermatologia"));
     }

@@ -15,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@Setter
 public class QuestionEntity {
     @Id
     @Column(name = "id")

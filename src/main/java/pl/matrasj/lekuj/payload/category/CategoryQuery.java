@@ -1,19 +1,19 @@
 package pl.matrasj.lekuj.payload.category;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
-import java.util.List;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class CategoryQuery {
     Long id;
     String name;
     Long parentCategoryId;
-    List<CategoryQuery> subCategories;
+    Long questionsQuantity;
+    boolean hasNestedCategories;
+    @Builder.Default
+    int level = 0;
 }

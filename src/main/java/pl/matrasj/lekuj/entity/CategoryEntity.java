@@ -1,8 +1,10 @@
 package pl.matrasj.lekuj.entity;
 
+import com.google.common.collect.Lists;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.Formula;
 
 import java.util.List;
 
@@ -27,5 +29,8 @@ public class CategoryEntity {
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_category_id")
-    List<CategoryEntity> subCategories;
+    List<CategoryEntity> subCategories = Lists.newArrayList();
+
+    @Formula("(SELECT COUNT(*) FROM question q WHERE q.category_id = id)")
+    Long questionsQuantity;
 }
