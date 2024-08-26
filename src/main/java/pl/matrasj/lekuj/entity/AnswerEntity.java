@@ -10,6 +10,7 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class AnswerEntity {
     @Id
@@ -28,4 +29,6 @@ public class AnswerEntity {
 
     @Column(name = "correct")
     boolean correct;
+
+
 }

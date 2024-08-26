@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class CategoryMapper {
     CategoryRepository categoryRepository;
+
     public CategoryCommand toCommand(CategoryEntity category) {
         return CategoryCommand.builder()
                 .id(category.getId())

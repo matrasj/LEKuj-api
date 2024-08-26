@@ -37,7 +37,7 @@ public class QuestionEntity {
     @Column(name = "category_id")
     Long categoryId;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "question_id")
     List<AnswerEntity> answers = new ArrayList<>();
 }

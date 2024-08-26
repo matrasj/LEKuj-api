@@ -1,6 +1,5 @@
 package pl.matrasj.lekuj.payload.answer;
 
-import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -8,10 +7,8 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class AnswerCommand {
-    @NotBlank String content;
+public class AnswerQuery {
+    String content;
     boolean correct;
-    Long questionId;
 }

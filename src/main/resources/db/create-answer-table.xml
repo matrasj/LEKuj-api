@@ -22,7 +22,7 @@
             </column>
 
             <column name="question_id" type="bigint">
-                <constraints nullable="false" foreignKeyName="fk_answer_question"
+                <constraints foreignKeyName="fk_answer_question"
                 referencedColumnNames="id" referencedTableName="question"/>
             </column>
 
